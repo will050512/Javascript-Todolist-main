@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Book List App</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie-edge">
+	<link rel="stylesheet" href="https://bootswatch.com/4/flatly/bootstrap.min.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+	<title>書籍登入系統樣板參考</title>
+</head>
+<body>
+	<div class="container mt-4">
+		<h1 class="display-4 text-center"><i class="fas fa-book-open text-primary"></i> <span class="text-dark"> Wa.01</span> Book list</h1>
+    <p class="text-center">書籍清單樣板<a href="thttps://youtu.be/JaMCxVWtW58" target="_blank">(點我看教學)</a></p>
+    <p class="text-center">但教學寫得太進階可看程式碼是用模組化方式，所以還是自己弄了一個書籍清單<a href="https://github.com/wastu01/Javascript-Todolist" target="_blank">(簡易版本)</a></p>
+	
+<!--     https://jsbin.com/yeveqasijo/edit?html,js,console,output -->
+		<form id="book-form">
+			<div class="form-group">
+				<label for="title">Title</label>
+				<input type="text" id="title" class="form-control">
+			</div>
+			<div class="form-group">
+				<label for="author">Author</label>
+				<input type="text" id="author" class="form-control">
+			</div>
+			<div class="form-group">
+				<label for="title">ISBN#</label>
+				<input type="text" id="isbn" class="form-control">
+			</div>
+			<input type="submit" value="Add Book" class="btn btn-primary btn-block">
+		</form>
+		<table class="table table-hover mt-5">
+			<thead>
+				<tr>
+					<th>Title</th>
+					<th>Author</th>
+					<th>ISBN#</th>
+					<th>Title</th>
+				</tr>
+			</thead>
+			<tbody id="book-list"></tbody>
+		</table>
+	</div>
+	<script src="app.js"></script>
+</body>
+</html>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
+</html>
