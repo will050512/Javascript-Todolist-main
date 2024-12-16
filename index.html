@@ -1,65 +1,121 @@
 <!doctype html>
-<html>
+<html lang="zh-TW">
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-<script src="https://kit.fontawesome.com/7c505e26a3.js" crossorigin="anonymous"></script>
-<title>wa.01-book</title>
-<link rel="stylesheet" href="./style.css">
-</head>
-<style>
-/* go use bootstrap link or check in style.css file committed by wa.01 */
-</style>
-</head>
-
-<body>
-
-<div class="container">
-  <div class="title">
-    <h1>wa.01 的書籍登入系統 <i class="fa-solid fa-square-check"></i></h1>
-    <h2>（無localStorage版本）請測試各種情況 TKS</h2>
-
-  </div>
-  <p class="demo">
-  <span class="demo-item"><span class="demo-item_inner"> 數位學習系統 </span></span>
-  <span class="demo-item"><span class="demo-item_inner"> 網頁程式設計 </span></span>
-  <span class="demo-item"><span class="demo-item_inner"> 物聯網設計應用 </span></span>
-  </p>
-
-  <div class="list">
-      <div class="IO col">
-        
-        <input name="a" id="input" type="text" placeholder="我們有幾個字可以放呢" required="" maxlength="10"/>
-        <button onclick="Newlist();" class="btn" id="add">新增自訂資料</button>
-        <button onclick="Show();" class="btn" id="show">『隱藏』輸入資料</button>
-        <button onclick="DefaultList();" class="btn" id="default">載入預設資料</button>
-        <button onclick="DelList();" class="btn" id="delete">移除最後一行</button>
-        <button onclick="Sort('下一版本才有此功能');" class="btn" id="sort">排序</button>
-        <button onclick="confirm();" class="btn" id="clear">清空所有資料</button>
-        <button onclick="Search('所以不給你按下');" class="btn" id="search">大家都沒做的『查詢』特定書籍功能</button>
-        
-      </div>
-
-  </div>
-  <div class="list" id="render">
-    <ul class="wrap" id="list">
-        <!-- <li class="item"><a href="https://hackmd.io/@DCT/投資金律書本筆記" target="_blank">0投資金律</a></li>
-        <li class="item"><a href="https://www.eslite.com/product/1001112702764163" target="_blank">1原子習慣</a></li>
-        <li class="item"><a href="https://www.eslite.com/product/10099123161622609" target="_blank" name="The Economist, 10期">2烽火烏克蘭</a></li> -->
-      </ul>
-  </div>
-  <div class="list" id="text">
-    <h3 class="list" id="h3" style=""></h3>
-    <h3 class="list" >目前有<span id="Count">-1</span>本書</h3>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>龍華科技大學 - 書籍登入系統</title>
     
-  </div>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/7c505e26a3.js" crossorigin="anonymous"></script>
+    
+    <style>
+        body {
+            background-color: #f4f4f4;
+            font-family: 'Arial', 'Microsoft JhengHei', sans-serif;
+        }
+        .container {
+            background-color: white;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            padding: 30px;
+            margin-top: 30px;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #0066cc;
+            padding-bottom: 10px;
+        }
+        .header img {
+            max-height: 80px;
+            margin-right: 20px;
+        }
+        .title h1 {
+            color: #0066cc;
+            font-weight: bold;
+        }
+        .demo-item {
+            background-color: #e6f2ff;
+            margin: 5px;
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+        .btn {
+            margin: 5px;
+            background-color: #0066cc;
+            color: white;
+        }
+        .btn:hover {
+            background-color: #004c99;
+            color: white;
+        }
+        #list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .item {
+            background-color: #f8f9fa;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .item a {
+            text-decoration: none;
+            color: #0066cc;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <img src="https://www.lhu.edu.tw/var/file/0/1000/img/272/mlogo.png" alt="龍華科技大學 LOGO">
+        <div>
+            <h1>wa.01 的書籍登入系統 <i class="fa-solid fa-square-check"></i></h1>
+            <p class="text-muted">姓名：吳敏全 | 學號：E1124181028</p>
+        </div>
+    </div>
 
+    <p class="demo">
+        <span class="demo-item"><span class="demo-item_inner">數位學習系統</span></span>
+        <span class="demo-item"><span class="demo-item_inner">網頁程式設計</span></span>
+        <span class="demo-item"><span class="demo-item_inner">物聯網設計應用</span></span>
+    </p>
 
+    <div class="list">
+        <div class="IO col">
+            <input name="a" id="input" type="text" class="form-control mb-2" placeholder="我們有幾個字可以放呢" required maxlength="10"/>
+            <div class="btn-group" role="group">
+                <button onclick="Newlist();" class="btn" id="add">新增自訂資料</button>
+                <button onclick="Show();" class="btn" id="show">『隱藏』輸入資料</button>
+                <button onclick="DefaultList();" class="btn" id="default">載入預設資料</button>
+                <button onclick="DelList();" class="btn" id="delete">移除最後一行</button>
+                <button onclick="Sort('下一版本才有此功能');" class="btn" id="sort">排序</button>
+                <button onclick="confirm();" class="btn" id="clear">清空所有資料</button>
+                <button onclick="Search('所以不給你按下');" class="btn" id="search">大家都沒做的『查詢』特定書籍功能</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="list mt-3" id="render">
+        <ul class="wrap" id="list">
+            <!-- 動態內容將在此顯示 -->
+        </ul>
+    </div>
+
+    <div class="list mt-3" id="text">
+        <h3 class="list" id="h3"></h3>
+        <h3 class="list">目前有<span id="Count">-1</span>本書</h3>
+    </div>
 </div>
+
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-<script  src="./script.js"></script>
+<script src="./script.js"></script>
 </body>
 </html>
